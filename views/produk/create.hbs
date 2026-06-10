@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tambah Produk</title>
+</head>
+<body>
+
+<h1>Tambah Produk</h1>
+
+<form
+action="/produk/create"
+method="POST"
+>
+
+<input
+type="text"
+name="nama"
+placeholder="Nama produk"
+/>
+
+<br><br>
+
+<textarea
+name="deskripsi"
+placeholder="Deskripsi"
+></textarea>
+
+<br><br>
+
+<input
+type="number"
+name="harga"
+placeholder="Harga"
+/>
+
+<br><br>
+
+<input
+type="number"
+name="stok"
+placeholder="Stok"
+/>
+
+<br><br>
+
+<select
+name="category_id"
+>
+
+<option>
+Pilih kategori
+</option>
+
+{{#each kategori}}
+
+<option
+value="{{this.id}}"
+>
+{{this.nama}}
+</option>
+
+{{/each}}
+
+</select>
+
+<br><br>
+
+<button type="submit">
+Simpan
+</button>
+
+</form>
+
+</body>
+</html> 

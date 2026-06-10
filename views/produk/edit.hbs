@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Produk</title>
+</head>
+<body>
+
+<h1>Edit Produk</h1>
+
+<form
+action="/produk/edit/{{produk.id}}"
+method="POST"
+>
+
+<input
+type="text"
+name="nama"
+value="{{produk.nama}}"
+/>
+
+<br><br>
+
+<textarea
+name="deskripsi"
+>{{produk.deskripsi}}</textarea>
+
+<br><br>
+
+<input
+type="number"
+name="harga"
+value="{{produk.harga}}"
+/>
+
+<br><br>
+
+<input
+type="number"
+name="stok"
+value="{{produk.stok}}"
+/>
+
+<br><br>
+
+<select name="category_id">
+
+{{#each kategori}}
+
+<option
+value="{{this.id}}"
+>
+{{this.nama}}
+</option>
+
+{{/each}}
+
+</select>
+
+<br><br>
+
+<button type="submit">
+Update
+</button>
+
+</form>
+
+</body>
+</html>

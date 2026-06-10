@@ -9,5 +9,6 @@ import { KategoriService } from './kategori.service';
   imports: [TypeOrmModule.forFeature([Kategori])],
   controllers: [KategoriController],
   providers: [KategoriService],
+  exports: [KategoriService],
 })
 export class KategoriModule {}

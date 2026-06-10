@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Produk</title>
+</head>
+<body>
+
+<h1>Daftar Produk</h1>
+
+<form method="GET">
+  <input
+    type="text"
+    name="search"
+    placeholder="Cari produk"
+  />
+
+  <button type="submit">
+    Search
+  </button>
+</form>
+
+<br>
+
+<a href="/produk/create">
+Tambah Produk
+</a>
+
+<hr>
+
+{{#each produk}}
+
+<div>
+
+<h3>{{this.nama}}</h3>
+
+<p>
+Kategori:
+{{this.kategori.nama}}
+</p>
+
+<p>
+Harga:
+Rp {{this.harga}}
+</p>
+
+<p>
+Stok:
+{{this.stok}}
+</p>
+
+<a href="/produk/{{this.id}}">
+Detail
+</a>
+
+|
+
+<a href="/produk/edit/{{this.id}}">
+Edit
+</a>
+
+|
+
+<a href="/produk/delete/{{this.id}}">
+Delete
+</a>
+
+</div>
+
+<hr>
+
+{{/each}}
+
+</body>
+</html>

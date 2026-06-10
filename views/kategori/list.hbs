@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kategori</title>
+</head>
+<body>
+
+<h1>Daftar Kategori</h1>
+
+<form method="GET">
+  <input
+    type="text"
+    name="search"
+    placeholder="Cari kategori"
+  />
+  <button type="submit">
+    Search
+  </button>
+</form>
+
+<br>
+
+<a href="/kategori/create">
+  Tambah Kategori
+</a>
+
+<hr>
+
+{{#each kategori}}
+<div>
+
+  <h3>{{this.nama}}</h3>
+
+  <a href="/kategori/{{this.id}}">
+    Detail
+  </a>
+
+  |
+
+  <a href="/kategori/edit/{{this.id}}">
+    Edit
+  </a>
+
+  |
+
+  <a href="/kategori/delete/{{this.id}}">
+    Delete
+  </a>
+
+</div>
+<hr>
+{{/each}}
+
+</body>
+</html>

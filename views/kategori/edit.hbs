@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Kategori</title>
+</head>
+<body>
+
+<h1>Edit Kategori</h1>
+
+<form
+  action="/kategori/edit/{{kategori.id}}"
+  method="POST"
+>
+  <input
+    type="text"
+    name="name"
+    value="{{kategori.nama}}"
+  />
+
+  <br><br>
+
+  <button type="submit">
+    Update
+  </button>
+</form>
+
+</body>
+</html>

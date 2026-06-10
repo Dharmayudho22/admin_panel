@@ -16,7 +16,7 @@ export class Produk {
   id: number;
 
   @Column()
-  categori_id: number;
+  category_id: number;
 
   @Column()
   nama: string;
@@ -36,7 +36,7 @@ export class Produk {
   gambar: string;
 
   @ManyToOne(() => Kategori, (kategori) => kategori.produk)
-  @JoinColumn({ name: 'categori_id' })
+  @JoinColumn({ name: 'category_id' })
   kategori: Kategori;
 
   @CreateDateColumn()
