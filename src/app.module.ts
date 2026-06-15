@@ -1,24 +1,26 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
+
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
 import { KategoriModule } from './kategori/kategori.module';
 import { ProdukModule } from './produk/produk.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+
+import { AuthMiddleware } from './auth/auth.middleware';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: '',
+      database: 'admin_panel',
       autoLoadEntities: true,
       synchronize: true,
     }),
@@ -28,5 +30,13 @@ import { UserModule } from './user/user.module';
     ProdukModule,
     UserModule,
   ],
+
+  controllers: [AppController],
+
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(AuthMiddleware).forRoutes('*');
+  }
+}
